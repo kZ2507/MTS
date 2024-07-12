@@ -22,18 +22,21 @@ public class MTStest {
         WebDriverWait wait = new WebDriverWait(driver, 20);
 
 
+        @Test
         String expectedTitle;
         expectedTitle = "Онлайн пополнение без комиссии";
         String actualText = driver.findElement(By.xpath("//div[@class='pay__wrapper']/h2")).getText().replaceAll("\\n", " ");
         Assertions.assertEquals(expectedTitle, actualText);
 
 
+        @Test
         List<WebElement> logos = driver.findElements(By.xpath("//div[@class='pay__partners']/descendant::img"));
         for(int i = 0; i< ((List<?>) logos).size(); i++) {
             String url = logos.get(i).getAttribute("src");
         }
 
 
+        @Test
         WebElement infoLink = driver.findElement(By.xpath("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/"));
         infoLink.click();
         String expectredURL = "https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/";
@@ -41,6 +44,7 @@ public class MTStest {
         Assert.assertEquals(actualURL, expectredURL);
 
 
+        @Test
         WebElement buttonSubmit= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='pay-connection']")));
         WebElement inputPhone = driver.findElement(By.xpath("//input[@id='connection-phone']"));
         inputPhone.sendKeys("297777777");
