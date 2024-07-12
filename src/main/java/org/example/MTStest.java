@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class MTStest {
-    public static void testing() {
         WebDriver driver = new ChromeDriver();
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
         driver.manage().window();
@@ -23,7 +22,7 @@ public class MTStest {
 
 
         @Test
-            public void t1 {
+            public void t1() {
         String expectedTitle;
         expectedTitle = "Онлайн пополнение без комиссии";
         String actualText = driver.findElement(By.xpath("//div[@class='pay__wrapper']/h2")).getText().replaceAll("\\n", " ");
@@ -32,7 +31,7 @@ public class MTStest {
 
 
         @Test
-            public void t2 {
+            public void t2() {
         List<WebElement> logos = driver.findElements(By.xpath("//div[@class='pay__partners']/descendant::img"));
         for(int i = 0; i< ((List<?>) logos).size(); i++) {
             String url = logos.get(i).getAttribute("src");
@@ -41,7 +40,7 @@ public class MTStest {
 
 
         @Test
-            public void t3 {
+            public void t3() {
         WebElement infoLink = driver.findElement(By.xpath("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/"));
         infoLink.click();
         String expectredURL = "https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/";
@@ -51,7 +50,7 @@ public class MTStest {
 
 
         @Test
-            public void t4 {
+            public void t4() {
         WebElement buttonSubmit= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form[@id='pay-connection']")));
         WebElement inputPhone = driver.findElement(By.xpath("//input[@id='connection-phone']"));
         inputPhone.sendKeys("297777777");
@@ -59,5 +58,4 @@ public class MTStest {
         inputSum.sendKeys("1");
         buttonSubmit.click();
         }
-    }
 }
